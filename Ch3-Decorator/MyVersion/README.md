@@ -1,0 +1,1 @@
+This is my version of the code found in the "BookVersion" folder. It does the same with a lot less code duplication, but admittedly it is a bit harder to understand, as one needs to be fairly confident with class inheritence to see it through. Otherwise, the logic is the same.
