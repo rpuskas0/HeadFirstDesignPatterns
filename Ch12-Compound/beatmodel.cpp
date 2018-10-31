@@ -63,19 +63,7 @@ void BeatModel::off()
 void BeatModel::setBPM(int bpm)
 {
     currBpm = bpm;
-    // Negative BPM does not make sense, 0 will cause FPE because of DIVZERO
     if (bpm > 0 && timer->isActive()) {
-        // NOTE: why call getBPM() here, just use currBpm!
-        // NOTE: if the the second operator is integer the first value will be
-        //       truncated to ingeger. So 60/<NUM>60) will be 0.X, which when
-        //       cast to integer is 0. Then will it only be mutliplied with
-        //       1000 which is also 0, so zero timeout is a continuous beep.
-        //auto timeoutMs{(60/currBpm) * 1000}
-        // Solution 1: avoid mutliplying at run time and just divide 60k ms by BPM
-        //auto timeoutMs{(60000/currBpm)};
-        // Soltution 2: make sure all vaulues are double so there is no implicit
-        //              casting of values during evaluation.
-        // auto timeoutMs{(60.0L / (double)currBpm) * 1000.0L};
         timer->setInterval(60000/currBpm);
         notifyBPMObservers();
     }

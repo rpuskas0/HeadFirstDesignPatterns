@@ -27,16 +27,12 @@ void BeatController::stop()
 void BeatController::increaseBPM()
 {
     int bpm = model.getBPM();
-    // NOTE: need to use prefix operator to actually pass an incremented value
-    //       to the function!
     model.setBPM(++bpm);
 }
 
 void BeatController::decreaseBPM()
 {
     int bpm = model.getBPM();
-    // NOTE: need to use prefix operator to actually pass a decreased value to
-    //       the function.
     model.setBPM(--bpm);
 }
 
